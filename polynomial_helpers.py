@@ -40,7 +40,6 @@ def get_dldx_dsdt_equation(t, a_dict, dP):
     for i in range(len(a_dict) - 1):
         out += (dP(a_dict[i]) + (i+1)*a_dict[i+1])*(t**i)
     out += dP(a_dict[len(a_dict) - 1]*(t**(len(a_dict) - 1)))
-#     out += dP(2*a_dict[len(a_dict) - 1]*(t**(len(a_dict) - 1)))
     return out
 
 
