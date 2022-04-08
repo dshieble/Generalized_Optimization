@@ -64,7 +64,7 @@ def find_starting_value(equations, a_dict, raw_starting_value):
       find a new starting value that the proposal value divides and that yields an integer solution
     """
     equations_with_raw_start = equations + [a_dict[0] - raw_starting_value]
-    raw_solution_values = list(linsolve(equations_with_raw_start, a_dict.values()))[0]
+    raw_solution_values = list(linsolve(equations_with_raw_start, list(a_dict.values())))[0]
     raw_rational_solution_dict = {a_var: value for a_var, value in zip(a_dict.values(), raw_solution_values)} 
     raw_denominator_lcm = np.lcm.reduce([s.q for s in raw_rational_solution_dict.values()])
     return raw_starting_value * raw_denominator_lcm
@@ -93,7 +93,7 @@ def get_solution_dict(equations, a_dict):
         equations: A system of equations
         a_dict: a dictionary {index: number or sympy variable}
     """
-    underspecified_solution_values = list(linsolve(equations, a_dict.values()))[0]
+    underspecified_solution_values = list(linsolve(equations, list(a_dict.values())))[0]
     raw_rational_solution_values = choose_solution(underspecified_solution_values=underspecified_solution_values)
     raw_rational_solution_dict = {a_var: value for a_var, value in zip(a_dict.values(), raw_rational_solution_values)} 
     
