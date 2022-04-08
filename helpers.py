@@ -145,7 +145,7 @@ def sample_gen_vals(poly, scale, numeric_type):
 
 
 
-def random_search(poly, numeric_type, steps=1000, scale=50):
+def random_search(poly, numeric_type, steps=1000, scale=10):
     """
     Uniformly generate exponents in (-scale, scale), then generates
         random numbers from (-2^scale, 2^scale) and test them in the polynomial
